@@ -1,0 +1,55 @@
+
+/*ANIMAÇÕES EM CSS*/
+@keyframes moveInLeft {
+  //estado inicial do nosso elemento
+  0%{
+    opacity: 0; /*desapareço com o elemento*/
+    transform: translateX(-10rem); /* mover o elemento -100px da esquerda para a direita*/
+  }
+
+  /*estado do meio do nosso elemento*/
+  80%{
+    transform: translateX(1rem); /* movo o elemento 10 px para esquerda*/
+  }
+  
+  /*estado final do nosso elemento*/
+  100%{
+    opacity: 1; /*mostro o elemento*/
+    transform: translate(0); /* volto com o estado inicial do elemento*/
+  }
+}
+
+@keyframes moveInRight {
+  /*estado inicial do nosso elemento*/
+  0%{
+    opacity: 0; /*desapareço com o elemento*/
+    transform: translateX(10rem); /* mover o elemento 100px da direita para a esquerda*/
+  }
+
+  /*estado do meio do nosso elemento*/
+  80%{
+    transform: translateX(-1rem); /* movo o elemento -10 px para a direita*/
+  }
+  
+  /*estado final do nosso elemento*/
+  100%{
+    opacity: 1; /*mostro o elemento*/
+    transform: translate(0); /* volto com o estado inicial do elemento*/
+  }
+}
+
+@keyframes moveInButton {
+  /*estado inicial do nosso elemento*/
+  0%{
+    opacity: 0; /*desapareço com o elemento*/
+    transform: translateY(3rem); /* mover o elemento 30px de baixo para cima*/
+  }
+
+  /*estado final do nosso elemento*/
+  100%{
+    opacity: 1; /*mostro o elemento*/
+    transform: translate(0); /* volto com o estado inicial do elemento*/
+  }
+}
+
+/*fim das animações*/

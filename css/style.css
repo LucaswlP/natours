@@ -1,0 +1,214 @@
+@charset "UTF-8";
+/*ANIMAÇÕES EM CSS*/
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    /*desapareço com o elemento*/
+    transform: translateX(-10rem);
+    /* mover o elemento -100px da esquerda para a direita*/ }
+  /*estado do meio do nosso elemento*/
+  80% {
+    transform: translateX(1rem);
+    /* movo o elemento 10 px para esquerda*/ }
+  /*estado final do nosso elemento*/
+  100% {
+    opacity: 1;
+    /*mostro o elemento*/
+    transform: translate(0);
+    /* volto com o estado inicial do elemento*/ } }
+
+@keyframes moveInRight {
+  /*estado inicial do nosso elemento*/
+  0% {
+    opacity: 0;
+    /*desapareço com o elemento*/
+    transform: translateX(10rem);
+    /* mover o elemento 100px da direita para a esquerda*/ }
+  /*estado do meio do nosso elemento*/
+  80% {
+    transform: translateX(-1rem);
+    /* movo o elemento -10 px para a direita*/ }
+  /*estado final do nosso elemento*/
+  100% {
+    opacity: 1;
+    /*mostro o elemento*/
+    transform: translate(0);
+    /* volto com o estado inicial do elemento*/ } }
+
+@keyframes moveInButton {
+  /*estado inicial do nosso elemento*/
+  0% {
+    opacity: 0;
+    /*desapareço com o elemento*/
+    transform: translateY(3rem);
+    /* mover o elemento 30px de baixo para cima*/ }
+  /*estado final do nosso elemento*/
+  100% {
+    opacity: 1;
+    /*mostro o elemento*/
+    transform: translate(0);
+    /* volto com o estado inicial do elemento*/ } }
+
+/*fim das animações*/
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  /*queremos 10pixels em porcentagem 
+    o padro é 16 pixels que é igual a 100%
+    entao 10/16 = 0.625, logo isso equivale
+    a 62.5%*/
+  font-size: 62.5%; }
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem;
+  box-sizing: border-box; }
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  margin-bottom: 6rem; }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    /* duração*/
+    animation-timing-function: ease-out;
+    /*animation-delay: 2s;*/
+    /*atraso da animação*/ }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    animation: moveInRight 1s ease-out; }
+
+.btn {
+  /* estado inicial do botao*/
+  /*quando passo o mouse em cima*/
+  /*quando eu clico*/
+  /* para fazer a animacao do botao*/
+  /*colocando o elemento por traz do botao, depois do elemento*/
+  /*animacao do button*/ }
+  .btn:link, .btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    /* para o button ter seu proprio espaço*/
+    border-radius: 10rem;
+    transition: all .2s;
+    position: relative;
+    font-size: 1.6rem; }
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    /* essa sombra aparece apenas na posicao do y*/
+    /*quando focado, depois do elemento*/ }
+    .btn:hover::after {
+      transform: scaleX(1.5) scaleY(1.6);
+      /*depois do foco aumenta em 1.5 toda a escala do botao*/
+      opacity: 0;
+      /*volta para 0 a opacidade, ele some*/ }
+  .btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    /* essa sombra aparece apenas na posicao do y quando eu clico*/ }
+  .btn--white {
+    background-color: #fff;
+    color: #777; }
+    .btn--white:after {
+      background-color: #fff; }
+  .btn:after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s; }
+  .btn--animated {
+    /*
+     funcao de animacao
+     duracao
+     time da funcao
+     delay da animacao
+    */
+    animation: moveInButton .5s ease-out .75s;
+    /*
+      mesmo com a opacity a 0 la na funcao de animacao
+      o botao ja começa ligado
+      entao a linha abaixo faz com que o botao so apareça depois
+    */
+    animation-fill-mode: backwards; }
+
+.row {
+  max-width: 114rem;
+  background-color: #fff;
+  margin: 0 auto; }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    background-color: orangered;
+    float: left;
+    color: #fff;
+    text-align: center;
+    height: 4rem;
+    font-size: 2rem; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 4rem; }
+  .row .col-1-of-2 {
+    width: calc((100% - 4rem) / 2); }
+  .row .col-1-of-3 {
+    width: calc((100% - 2 * 4rem) / 3); }
+  .row .col-2-of-3 {
+    width: calc(2 * ((100% - 2 * 4rem) / 3) + 4rem); }
+  .row .col-1-of-4 {
+    width: calc((100% - 3 * 4rem) / 4); }
+  .row .col-2-of-4 {
+    width: calc(2 * ((100% - 3 * 4rem) / 4) + 4rem); }
+  .row .col-3-of-4 {
+    width: calc(3 * ((100% - 3 * 4rem) / 4) + 2 * 4rem); }
+
+.header {
+  height: 95vh;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  position: relative;
+  /* (xy, xy, xy, xy)
+     cada xy é um ponto de cada estremo da figura
+     esquerdo superior, direito superior e inferior
+  */
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; }
