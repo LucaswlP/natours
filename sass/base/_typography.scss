@@ -1,3 +1,8 @@
+/*
+  ARQUIVO QUE CONTEM OS TIPOS DE DADOS
+  EX: h1,h2,p,span etc.
+*/
+
 body{
   font-family: "Lato", sans-serif;
   font-weight: 400;
@@ -33,5 +38,45 @@ body{
     font-weight: 700;
     letter-spacing: 1.75rem;
     animation: moveInRight 1s ease-out;
+  }
+}
+
+.heading-secondary{
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  //vamos construir um gradient meio animada no h2
+  //primeiro façamos o fundo gradiente por traz do texto
+  // background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+  background-image: linear-gradient(to right, $color-tertiary-light, $color-tertiary-dark);
+  display: inline-block; //esse vai fazer com que o grandiente ocupe somente a escrita
+  -webkit-background-clip: text; //aqui vamos fazer o gradiente ocupar somente o texto.
+  color: transparent; //aqui vamos tirar a cor do texto, para aparecer somente o gradiente
+  transition: all .2s; //a transição dura 2 segundos
+  letter-spacing: .2rem; //espaçamento de 2pixels entre as letras
+
+  /*
+    na posicao y ele cai 2 pixes
+    na posicao x ele cai 15 pixels
+    na scala ele expande em 1.1
+  */
+  &:hover{
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    text-shadow: .5rem 1rem 2rem rgba($color-black, .2);
+  }
+
+}
+
+.heading-tertiary{
+  font-size: $default-font-size;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.paragraph{
+  font-size: $default-font-size;
+
+  &:not(:last-child){
+    margin-bottom: 3rem;
   }
 }

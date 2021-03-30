@@ -1,0 +1,75 @@
+// seção do main
+/*
+  esse margin top é para corrigir o container do header que esta subindo
+  a altura total do header é 95 vh e o corte que ele faz toma 75vh
+  então para o container do main preencher o restante do container ele
+  tem que subir 20vh.
+*/
+.section-about{
+  background-color: $color-grey-light-1;
+  padding: 25rem 0;
+  margin-top: -20vh;
+}
+
+.section-features {
+  padding: 20rem 0;
+  background-image: linear-gradient(
+    to right bottom,
+    rgba($color-tertiary-light, 0.8),
+    rgba($color-tertiary-dark, 0.8)),
+    url(../img/nat-4.jpg);
+    background-size: cover; //vai preencher a imagem
+    transform: skewY(-7deg);  //vai inclinar a imagem que nem a /
+    margin-top: -12rem;
+    background-blend-mode: color-burn; // o gradiente fica por cima da imagem
+    //selecionando os filhos do section-features
+    & > * {
+      transform: skewY(7deg);
+    }
+}
+
+.section-tours {
+  background-color: $color-grey-light-1;
+  padding: 25rem 0 15rem 0;
+  margin-top: -13rem;
+}
+
+.section-stories {
+  position: relative;
+  padding: 15rem 0;
+}
+
+.section-book {
+  padding: 15rem 0;
+  background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark);
+}
+
+.book {
+  //vamos usar um gridiente de cor solida para dividir o bloco em duas cores
+  /*
+    inclinado a 105 graus
+    gradiente de cor branca
+    gradiente de cor branca solida 50%
+    e a outra metade transparente ou a cor que vc quiser
+    e a imagem de fundo
+  */
+  background-image: linear-gradient(
+    105deg, 
+    rgba($color-white, .8) 0%,
+    rgba($color-white, .8) 50%,
+    transparent 50%),
+    url(../../img/nat-10.jpg);
+  background-size: 100%;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba($color-black, .2);
+  height: 50rem;
+
+  &__form {
+    width: 50%;
+    padding: 6rem;
+
+  }
+}
+
+
+

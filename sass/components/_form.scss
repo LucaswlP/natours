@@ -1,0 +1,107 @@
+.form {
+
+  &__group:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+
+  &__input {
+    font-size: 1.5rem;
+    font-family: inherit; //herda a fonte da pagina : Lato
+    padding: 1.5rem 2rem;
+    border-radius: 2px;
+    background-color: rgba($color-white, .8);
+    border: none;
+    border-bottom: 3px solid transparent;
+    width: 90%;
+    display: block;
+    color: inherit;
+    transition: all .3s;
+
+    //quando a gente clica e fica - fazer no intranet
+    &:focus {
+      outline: none;  //tira a borda preta interna
+      box-shadow: 0 1rem 2rem rgba($color-black, .1);
+      // border-bottom: 3px solid $color-primary;
+      border-bottom: 3px solid $color-tertiary-light;
+    }
+    
+    //quando a digitaçao os inputs for incorreta
+    &:focus:invalid {
+      border-bottom: 3px solid $color-secondary-dark;
+    }
+    //muda a cor do placeholder
+    &::-webkit-input-placeholder {
+      color: $color-gray-dark-2;
+    }
+  }
+
+  &__label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-left: 2rem;
+    margin-top: .7rem;
+    display: block;
+    transition: all .3s;
+  }
+
+
+  //queremos esconder o label e mostrar somente quando
+  //o cara clicar no input.
+  &__input:placeholder-shown + &__label {
+    opacity: 0; // esconde
+    visibility: hidden; //esconde
+    transform: translateY(-4rem); //quando digita o label aparece descendo looooooco
+  }
+
+  &__radio-group {
+    width: 49%;
+    display: inline-block;
+  }
+
+  &__radio-label {
+    font-size: $default-font-size;
+    cursor: pointer;
+    position: relative;
+    padding-left: 4.5rem;
+  }
+
+  &__radio-input{
+    display: none;
+  }
+
+  //radio personalizado
+  &__radio-button {
+    height: 3rem;
+    width: 3rem;
+    // border: 5px solid $color-primary;
+    border: 5px solid $color-tertiary-light;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top:-.4rem;
+
+    //bolinha dentro do radio personalizada, fica escondida
+    &::after {
+      content: "";
+      display: block;
+      height: 1.4rem;
+      width: 1.4rem;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      // background-color: $color-primary;
+      background-color: $color-tertiary-light;
+      opacity: 0;
+      transition: opacity .2s;
+    }
+  }
+
+  //se o radio tiver checado, selecionamos o nosso radio-label e
+  //o filho dele que é nossa bolinha verde. e mostramos a bolinha
+  &__radio-input:checked ~ &__radio-label &__radio-button::after {
+    opacity: 1;
+  }
+}

@@ -1,6 +1,5 @@
 .row{
   max-width: $grid-width;
-  background-color: $color-white;
   margin: 0 auto;
  
   //tudo exceto o ultiumo child
@@ -14,12 +13,11 @@
   //[class*="col-"] vai pegar todas as classes que tenham col no nome
   //[class$="col-"] vai pegar todas as classes que terminam com col
   [class^="col-"] {
-    background-color: orangered;
     float: left;
-    color:$color-white;
-    text-align: center;
-    height: 4rem;
-    font-size: 2rem;
+    // color:$color-white;
+    // text-align: center;
+    // height: 4rem;
+    // font-size: 2rem;
 
     &:not(:last-child){
       margin-right: $gutter-horizontal;
