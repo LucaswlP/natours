@@ -1,0 +1,173 @@
+.navigation {
+
+  &__checkbox {
+    display: none;
+  }
+
+  &__button {
+    background-color: $color-white;
+    height: 7rem;
+    width: 7rem;
+    position: fixed;
+    top: 6rem;
+    right: 6rem;
+    border-radius: 50%;
+    z-index: 2000;
+    box-shadow: 0 1rem 3rem rgba($color-black, .1);
+    text-align: center;
+    cursor: pointer;
+  }
+
+  &__background {
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    position: fixed;
+    top: 6.5rem;
+    right: 6.5rem;
+    background-image: radial-gradient($color-tertiary-light, $color-tertiary-dark);
+    z-index: 1000;
+    transition: transform .8s cubic-bezier(0.86, 0, 0.07, 1);
+    // transform: scale(80); //tirei o circulo azul
+  }
+
+  &__nav {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1500;
+
+    //sumi com os items do menu
+    opacity: 0;
+    width: 0;
+    transition: all .8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  &__list {
+    position: absolute;
+    //para deixar centralizado no meio da tela
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    //para deixar centralizado no meio da tela
+    list-style: none;
+    text-align: center;
+    width: 100%; //para arrumar animação de abrir e fechar
+  }
+
+  &__item {
+    margin: 1rem;
+  }
+
+  &__link {
+    &:link,
+    &:visited {
+      display: inline-block;
+      font-size: 3rem;
+      font-weight: 300;
+      padding: 1rem 2rem;
+      color: $color-white;
+      text-decoration: none;
+      text-transform: uppercase;
+      //linear solido 
+      background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%);
+      // a parte branca fica 250% para o lado direito
+      background-size: 230%;
+      transition: all .4s;
+
+      span{
+        margin-right: 1.5rem;
+        display: inline-block;
+      }
+    }
+
+    &:hover,
+    &:active {
+      //quando passo o mouse a parte branca fica 100% posicionada
+      background-position: 100%;
+      color: $color-tertiary-light;
+      transform: translateX(1rem);
+    }
+    
+  }
+
+  //funcionalidades
+  &__checkbox:checked ~ &__background {
+    transform: scale(80); // prencho a tela se o checkbox for checado
+  }
+
+  //mostro os items
+  &__checkbox:checked ~ &__nav {
+    opacity: 1;
+    width: 100%;
+  }
+
+  //icone do menu
+  /*
+    3 palitos
+    o before é o primeiro
+    e o after é o terceiro tipo assim::after
+    before = __
+    icon   = __
+    after  = __
+  */
+  &__icon {
+    position: relative;
+    margin-top: 3.5rem;
+
+    &,
+    &::before,
+    &::after {
+      width: 3rem;
+      height: 2px;
+      background-color: $color-gray-dark-3;
+      display: inline-block;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      transition: all .2s;
+    }
+
+    &::before {
+      top: -.8rem; //tamanho do primeiro
+    }
+
+    &::after {
+      top: .8rem; //tamanho do terceiro
+    }
+  }
+
+
+  // esses dois faz os 3 pausinhos ficarem mais longe tipo um scala
+  &__button:hover &__icon::before {
+    top: -1rem;
+  }
+
+
+  //esse tambem
+  &__button:hover &__icon::after {
+    top: 1rem;
+  }
+
+  //hack para fazer o X do menu
+  &__checkbox:checked + &__button &__icon {
+    background-color: transparent; //tiro os 3 pauzinhos
+  }
+
+  //faco um x nesses 2 ultimos
+  &__checkbox:checked + &__button &__icon::before {
+    top: 0;
+    transform: rotate(135deg);
+  }
+  
+  &__checkbox:checked + &__button &__icon::after {
+    top: 0;
+    transform: rotate(-135deg);
+  }
+}
