@@ -59,5 +59,18 @@
   layout - vão conter os layouts globais que vão estar em todo o site, ex : cabeçalho, rodapé,etc.
   pages - aqui vai estar nossa home page.
 
+  # trabalhando com filhos herdados.
+
+  No css não é possivel estilizar o checkbox, logo tem-se uma maneira de estilizar outro
+  elemento no lugar do checkbox e usar ele como se fosse um checkbox
+    - esconde o checkbox
+    - por cima coloque o elemento estilizado
+    - verificar se o checkbox está checked, caso sim , use &__checkbox:checked + &__label
+      e coloque como valor opacity: 1 para mostrar o elemento.
+
+  # Ancora
+
+  criamos uma id pra sessão e referenciamos essa id no a href que você quiser.
+
 
 
